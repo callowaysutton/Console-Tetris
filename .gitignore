@@ -367,3 +367,7 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/executable,visualstudio
+out/build/x64-Debug/.ninja_deps
+out/build/x64-Debug/.ninja_log
+*.ninja
+*.json
