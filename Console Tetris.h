@@ -18,28 +18,25 @@ int Rotate(int sx, int sy, int r) {
 	}
 }
 
-bool DoesPieceFit(int nTetromino, int nRotation, int nPosX, int nPosY)
+bool DoesPieceFit(int Shape, int Rotation, int PosX, int PosY)
 {
 	// All Field cells >0 are occupied
 	for (int px = 0; px < 4; px++)
 		for (int py = 0; py < 4; py++)
 		{
 			// Get index into piece
-			int pi = Rotate(px, py, nRotation);
+			int pi = Rotate(px, py, Rotation);
 
 			// Get index into field
-			int fi = (nPosY + py) * nFieldWidth + (nPosX + px);
+			int fi = (PosY + py) * FieldWidth + (PosX + px);
 
-			// Check that test is in bounds. Note out of bounds does
-			// not necessarily mean a fail, as the long vertical piece
-			// can have cells that lie outside the boundary, so we'll
-			// just ignore them
-			if (nPosX + px >= 0 && nPosX + px < nFieldWidth)
+
+			if (PosX + px >= 0 && PosX + px < FieldWidth)
 			{
-				if (nPosY + py >= 0 && nPosY + py < nFieldHeight)
+				if (PosY + py >= 0 && PosY + py < FieldHeight)
 				{
 					// In Bounds so do collision check
-					if (tetromino[nTetromino][pi] != L'.' && pField[fi] != 0)
+					if (shapes[Shape][pi] != L'.' && Field[fi] != 0)
 						return false; // fail on first hit
 				}
 			}
